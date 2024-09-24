@@ -1,8 +1,6 @@
 name: Deploy
 run-name: Deploy landing page to lyj.kr
-on:
-    push:
-        tags: [v*]
+on: [push]
 jobs:
     CI-CD:
         runs-on: ubuntu-latest
