@@ -10,7 +10,7 @@ jobs:
             - name: Docker build & push to prod
               run: |
                   echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-                  docker build -f Dockerfile-dev -t ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage .
+                  docker build -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage .
                   docker push ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage
 
             - name: Deploy to prod
