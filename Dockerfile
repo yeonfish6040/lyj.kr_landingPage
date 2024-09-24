@@ -1,9 +1,13 @@
 FROM public.ecr.aws/docker/library/node:lts-alpine
 
-ENTRYPOINT []
+RUN apk add tzdata && ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+WORKDIR /app
 
 COPY ./ ./
 
 RUN npm install
 
-CMD ["node", "index.js"]
+ENTRYPOINT ["node"]
+
+CMD ["index.js"]
