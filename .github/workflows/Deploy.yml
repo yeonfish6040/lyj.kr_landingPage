@@ -2,7 +2,7 @@ name: Deploy
 run-name: Deploy landing page to lyj.kr
 on: [push]
 jobs:
-    CI:
+    CI-CD:
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v4
@@ -12,9 +12,7 @@ jobs:
                   echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
                   docker build -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage .
                   docker push ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage
-    CD:
-        runs-on: ubuntu-latest
-        steps:
+
             -   name: Deploy to prod
                 uses: appleboy/ssh-action@master
                 id: deploy-prod
