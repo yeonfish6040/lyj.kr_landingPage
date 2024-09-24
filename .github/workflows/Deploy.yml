@@ -2,28 +2,30 @@ name: Deploy
 run-name: Deploy landing page to lyj.kr
 on: [push]
 jobs:
-    CI-CD:
+    CI:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            -   uses: actions/checkout@v4
 
-            - name: Docker build & push to prod
-              run: |
+            -   name: Docker build & push to prod
+                run: |
                   echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
                   docker build -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage .
                   docker push ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage
-
-            - name: Deploy to prod
-              uses: appleboy/ssh-action@master
-              id: deploy-prod
-              with:
-                  host: ${{ secrets.SERVER_IP }}
-                  username: ubuntu
-                  key: ${{ secrets.SERVER_PRIVATEKEY }}
-                  envs: GITHUB_SHA
-                  script: |
-                      sudo docker ps
-                      sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage
-                      sudo docker run -d -p 9003:3000 ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage .
-                      sudo docker network connect lyj_default
-                      sudo docker image prune -f
+    CD:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Deploy to prod
+                uses: appleboy/ssh-action@master
+                id: deploy-prod
+                with:
+                    host: ${{ secrets.SERVER_IP }}
+                    username: ubuntu
+                    key: ${{ secrets.SERVER_PRIVATEKEY }}
+                    envs: GITHUB_SHA
+                    script: |
+                        sudo docker ps
+                        sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage
+                        sudo docker run -d -p 9003:3000 ${{ secrets.DOCKERHUB_USERNAME }}/lyj_landingpage .
+                        sudo docker network connect lyj_default
+                        sudo docker image prune -f
