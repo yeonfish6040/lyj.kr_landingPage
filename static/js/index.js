@@ -4,6 +4,7 @@ const animation_index = {
     intro: {
         init: (callback, ...args) => {
             $(".container>.main").animate([ { height: "100%" }, { height: "20%" } ], { duration: 1500, fill: "both", easing: "ease-in-out" });
+            $(".container>.main>.subtitle>.inner").animate([ { maxWidth: "100%" }, { maxWidth: "0%" } ], { duration: 1500, fill: "both", easing: "ease-in-out" });
         }
     },
     events: {}

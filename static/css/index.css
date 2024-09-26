@@ -25,11 +25,19 @@ html {
         width: 100%;
 
         text-align: center;
-        align-content: top;
+        align-content: center;
         >.title {
             display: block;
             font-size: 4rem;
             font-weight: 700;
+        }
+        >.subtitle>.inner {
+            display: inline-block;
+            max-width: 100%;
+            width: fit-content;
+            margin: auto;
+            white-space: nowrap;
+            overflow: hidden;
         }
     }
 }
