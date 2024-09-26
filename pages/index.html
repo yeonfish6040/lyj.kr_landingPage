@@ -33,5 +33,9 @@
         </div>
     </div>
 </body>
-<script>init()</script>
+<script>
+    document.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === "complete") init();
+    })
+</script>
 </html>
