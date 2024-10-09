@@ -1,58 +1,12 @@
-<!--<!doctype html>-->
-<!--<html lang="ko">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport"-->
-<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
-<!--    <title>LYJ.KR</title>-->
-
-<!--    &lt;!&ndash; Start Google &ndash;&gt;-->
-<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X16EPHYTL6"></script>-->
-<!--    <script>-->
-<!--        window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-X16EPHYTL6');-->
-<!--    </script>-->
-<!--    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K8HFV5M5');</script>-->
-<!--    &lt;!&ndash; End Google &ndash;&gt;-->
-
-<!--    <link rel="stylesheet" href="/css/index.css">-->
-<!--    <script src="/js/index.js"></script>-->
-<!--</head>-->
-<!--<body>-->
-<!--    &lt;!&ndash; Google Tag Manager (noscript) &ndash;&gt;-->
-<!--    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HFV5M5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>-->
-<!--    &lt;!&ndash; End Google Tag Manager (noscript) &ndash;&gt;-->
-
-<!--    <div class="container">-->
-<!--        <div class="main">-->
-<!--            <span class="title">LYJ.KR</span>-->
-<!--            <span class="subtitle"><span class="inner">Personal website for <a href="https://github.com/yeonfish6040">yeonfish6040</a></span></span>-->
-<!--        </div>-->
-<!--        <div class="footer">-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</body>-->
-<!--<script>-->
-<!--    document.addEventListener("readystatechange", (e) => {-->
-<!--        if (e.target.readyState === "complete") init();-->
-<!--    })-->
-<!--</script>-->
-<!--</html>-->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>신입생이 말대꾸?</title>
-    <style>
-        .haha {
-            display: inline-block;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-        }
-    </style>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LYJ.KR</title>
+
     <!-- Start Google -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X16EPHYTL6"></script>
     <script>
@@ -60,33 +14,28 @@
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K8HFV5M5');</script>
     <!-- End Google -->
+
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/index.js"></script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HFV5M5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<span class="haha">뭘봐</span>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HFV5M5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <div class="main">
+            <span class="title">LYJ.KR</span>
+            <span class="subtitle"><span class="inner">Personal website for <a href="https://github.com/yeonfish6040">yeonfish6040</a></span></span>
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
 </body>
 <script>
-    const background = document.querySelector("body");
-    const target = document.querySelector(".haha");
-
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
-    }
-
-    setInterval(() => {
-        const width = window.outerWidth;
-        const height = window.outerHeight;
-
-        const x = getRandomInt(width+200)-500;
-        const y = getRandomInt(height+200)-500;
-        const size = getRandomInt(500);
-        const color = [getRandomInt(256), getRandomInt(256), getRandomInt(256)];
-        target.animate([{top: `${y}px`, left: `${x}px`}], { duration: 90, fill: "both", easing: "ease-in-out" });
-        target.animate([{fontSize: `${size/10}rem`}], { duration: 90, fill: "both", easing: "ease-in-out" });
-        target.animate([{color: `rgb(${color[0]}, ${color[1]}, ${color[2]})`}], { duration: 90, fill: "both", easing: "ease-in-out" })
-        background.animate([{backgroundColor: `rgb(${256-color[0]}, ${256-color[1]}, ${256-color[2]})`}], { duration: 90, fill: "both", easing: "ease-in-out" })
-    }, 50);
+    document.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === "complete") init();
+    })
 </script>
 </html>
