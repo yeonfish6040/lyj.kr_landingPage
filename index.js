@@ -41,6 +41,13 @@ const server = http.createServer((req, res) => {
                         accept()
                     }).catch((e) => reject([e, 500, "Internal error occurred"]));
                     break;
+                case "/dontsee":
+                    readFile("./pages/dontsee.html").then((data) => {
+                        res.writeHead(200);
+                        res.write(data);
+                        accept()
+                    }).catch((e) => reject([e, 500, "Internal error occurred"]));
+                    break;
                 case "/js/index.js":
                     readFile("./static/js/index.js").then((data) => {
                         res.writeHead(200);

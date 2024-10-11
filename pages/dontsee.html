@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>신입생이 말대꾸?</title>
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            font-family: Pretendard-Regular;
+
+            text-align: center;
+            align-content: center;
+        }
+
+        .haha {
+            position: absolute;
+            display: inline-block;
+            left: 50%;
+            top: 50%;
+        }
+    </style>
+</head>
+<body>
+    <span class="haha">뭘봐</span>
+</body>
+<script>
+    const background = document.querySelector("body");
+    const target = document.querySelector(".haha");
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    setInterval(() => {
+        const width = window.outerWidth;
+        const height = window.outerHeight;
+
+        let x = getRandomInt(width+200)-500;
+        let y = getRandomInt(height+200)-500;
+        let size = getRandomInt(300);
+        const color = [getRandomInt(256), getRandomInt(256), getRandomInt(256)];
+        target.animate([{top: `${y}px`, left: `${x}px`}], { duration: 90, fill: "both", easing: "ease-in-out" });
+        target.animate([{fontSize: `${size/10}rem`}], { duration: 90, fill: "both", easing: "ease-in-out" });
+        target.animate([{color: `rgb(${color[0]}, ${color[1]}, ${color[2]})`}], { duration: 90, fill: "both", easing: "ease-in-out" })
+        background.animate([{backgroundColor: `rgb(${256-color[0]}, ${256-color[1]}, ${256-color[2]})`}], { duration: 90, fill: "both", easing: "ease-in-out" })
+    }, 100);
+</script>
+</html>
