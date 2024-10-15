@@ -3,24 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>모의고사 풀 서비스 진행상황</title>
+
+    <style>
+        html {
+            font-size: clamp(0.5rem, 1.5vh, 2rem);
+        }
+
+        .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            align-content: center;
+        }
+
+        .linear {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            height: 30%;
+
+            >.radial {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                >.name {
+                    font-size: 2rem;
+                }
+                >.result {
+                    font-size: 2rem;
+                    font-weight: 800;
+                }
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="linear">
         <div class="radial ebs">
-            <div>EBS</div>
+            <div class="name">EBS</div>
             <div class="result"></div>
         </div>
         <div class="radial etoos">
-            <div>Etoos</div>
+            <div class="name">Etoos</div>
             <div class="result"></div>
         </div>
         <div class="radial megastudy">
-            <div>MegaStudy</div>
+            <div class="name">MegaStudy</div>
             <div class="result"></div>
         </div>
         <div class="radial mimac">
-            <div>대성 마이맥</div>
+            <div class="name">대성 마이맥</div>
             <div class="result"></div>
         </div>
     </div>
@@ -29,13 +67,17 @@
 <script>
     function update() {
         const req = new XMLHttpRequest();
-        req.open("POST", "/mock_test");
+        req.open("POST", "https://lyj.kr/mock_test");
         req.onload = () => {
             const res = JSON.parse(req.responseText);
             document.querySelector(".radial.ebs>.result").innerText = res.ebs ? "공개됨" : "미공개";
+            document.querySelector(".radial.ebs>.result").style.color = res.ebs ? "green" : "red";
             document.querySelector(".radial.etoos>.result").innerText = res.etoos ? "공개됨" : "미공개";
+            document.querySelector(".radial.etoos>.result").style.color = res.ebs ? "green" : "red";
             document.querySelector(".radial.megastudy>.result").innerText = res.megastudy ? "공개됨" : "미공개";
+            document.querySelector(".radial.megastudy>.result").style.color = res.ebs ? "green" : "red";
             document.querySelector(".radial.mimac>.result").innerText = res.mimac ? "공개됨" : "미공개";
+            document.querySelector(".radial.mimac>.result").style.color = res.ebs ? "green" : "red";
         }
         req.send();
 
