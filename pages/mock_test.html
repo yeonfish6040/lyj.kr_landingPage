@@ -27,15 +27,20 @@
 </div>
 </body>
 <script>
-    const req = new XMLHttpRequest();
-    req.open("POST", "/mock_test");
-    req.onload = () => {
-        const res = JSON.parse(req.responseText);
-        document.querySelector(".radial.ebs>.result").innerText = res.ebs ? "공개됨" : "미공개";
-        document.querySelector(".radial.etoos>.result").innerText = res.etoos ? "공개됨" : "미공개";
-        document.querySelector(".radial.megastudy>.result").innerText = res.megastudy ? "공개됨" : "미공개";
-        document.querySelector(".radial.mimac>.result").innerText = res.mimac ? "공개됨" : "미공개";
+    function update() {
+        const req = new XMLHttpRequest();
+        req.open("POST", "/mock_test");
+        req.onload = () => {
+            const res = JSON.parse(req.responseText);
+            document.querySelector(".radial.ebs>.result").innerText = res.ebs ? "공개됨" : "미공개";
+            document.querySelector(".radial.etoos>.result").innerText = res.etoos ? "공개됨" : "미공개";
+            document.querySelector(".radial.megastudy>.result").innerText = res.megastudy ? "공개됨" : "미공개";
+            document.querySelector(".radial.mimac>.result").innerText = res.mimac ? "공개됨" : "미공개";
+        }
+        req.send();
+
+        setTimeout(update, 5000);
     }
-    req.send();
+    update()
 </script>
 </html>
