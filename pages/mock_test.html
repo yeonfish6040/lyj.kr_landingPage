@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>모의고사 풀 서비스 진행상황</title>
+</head>
+<body>
+<div class="container">
+    <div class="linear">
+        <div class="radial ebs">
+            <div>EBS</div>
+            <div class="result"></div>
+        </div>
+        <div class="radial etoos">
+            <div>Etoos</div>
+            <div class="result"></div>
+        </div>
+        <div class="radial megastudy">
+            <div>MegaStudy</div>
+            <div class="result"></div>
+        </div>
+        <div class="radial mimac">
+            <div>대성 마이맥</div>
+            <div class="result"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    const req = new XMLHttpRequest();
+    req.open("POST", "/mock_test");
+    req.onload = () => {
+        const res = JSON.parse(req.responseText);
+        console.log(res);
+    }
+    req.send();
+</script>
+</html>

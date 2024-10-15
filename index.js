@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const fs = require("fs");
 const http = require("http");
+const mock_test = require("./functions/mock_test");
 
 function log(req, res) {
     const startTime = Date.now();
@@ -28,7 +29,7 @@ function readFile(path) {
 }
 
 const server = http.createServer((req, res) => {
-    (new Promise((accept, reject) => {
+    (new Promise(async (accept, reject) => {
         try {
             log(req, res);
 
@@ -47,6 +48,21 @@ const server = http.createServer((req, res) => {
                         res.write(data);
                         accept()
                     }).catch((e) => reject([e, 500, "Internal error occurred"]));
+                    break;
+                case "/mock_test":
+                    if (req.method === "GET") {
+                        readFile("./pages/mock_test.html").then((data) => {
+                            res.writeHead(200);
+                            res.write(data);
+                            accept()
+                        }).catch((e) => reject([e, 500, "Internal error occurred"]));
+                    }
+                    if (req.method === "POST") {
+                        const result = await mock_test();
+                        res.writeHead(200);
+                        res.write(`{"ebs": ${result[0]}, "etoos": ${result[1]}, "megastudy": ${result[2]}, "mimac": ${result[3]}}`);
+                        accept();
+                    }
                     break;
                 case "/js/index.js":
                     readFile("./static/js/index.js").then((data) => {
