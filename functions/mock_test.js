@@ -3,11 +3,11 @@ const fetch = require("node-fetch");
 async function ebsi() {
     const res = await (await fetch("https://www.ebsi.co.kr/ebs/xip/xipt/RetrieveSCVMainTop.ajax?irecord=202411151")).text();
 
-    const start = res.indexOf("<p class=\"count\">")+17;
-    const end = res.indexOf(`</p>`, start);
-    const status = res.substring(start, end);
+    // const start = res.indexOf("<p class=\"count\">")+17;
+    // const end = res.indexOf(`</p>`, start);
+    // const status = res.substring(start, end);
 
-    return !(status === "집계중");
+    return res.indexOf("<td>-</td>") === -1;
 }
 
 async function etoos() {
