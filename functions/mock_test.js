@@ -17,7 +17,7 @@ async function etoos() {
 }
 
 async function megastudy() {
-    const res = await (await fetch("https://www.megastudy.net/Entinfo/2025_jungsi/exam/Exam_main.asp?seq=333")).arrayBuffer();
+    const res = await (await fetch("https://www.megastudy.net/Entinfo/Exam/2024/go1/Exam_main.asp")).arrayBuffer();
 
     const decoded = (new TextDecoder("euc-kr")).decode(res);
     return decoded.indexOf("채점 데이터 집계 중입니다.") === -1;
