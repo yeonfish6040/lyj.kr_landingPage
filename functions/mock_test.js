@@ -1,13 +1,18 @@
 const fetch = require("node-fetch");
 
 async function ebsi() {
-    const res = await (await fetch("https://www.ebsi.co.kr/ebs/xip/xipt/RetrieveSCVMainTop.ajax?irecord=202411151")).text();
+    const header = new Headers();
+    header.set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    const res = await (await fetch("https://www.ebsi.co.kr/ebs/xip/xipa/retrieveGrdCutList.ajax", { method: "POST", body: "subjectId=17012%2C17014%2C17020%2C110001&irecord=202409041&ord=1", headers: header })).text();
 
     // const start = res.indexOf("<p class=\"count\">")+17;
     // const end = res.indexOf(`</p>`, start);
     // const status = res.substring(start, end);
-
-    return res.indexOf("<td>-</td>") === -1;
+    let res_copy = res;
+    // while (res_copy.indexOf("<td>-</td>") !== -1) {
+    //
+    // }
+    return res.indexOf("grdTypCng('N')") === -1;
 }
 
 async function etoos() {
@@ -30,6 +35,6 @@ async function mimac() {
     return decoded.indexOf("산출중입니다.") === -1;
 }
 
-async function mock_test() { return await Promise.all([ebsi(), etoos(), megastudy(), mimac()]) };
+async function mock_test() { return await Promise.all([ebsi(), etoos(), megastudy(), mimac()]) }
 
 module.exports = mock_test;
