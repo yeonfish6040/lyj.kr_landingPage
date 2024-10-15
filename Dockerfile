@@ -8,6 +8,6 @@ COPY ./ ./
 
 RUN npm install
 
-ENTRYPOINT ["node"]
+ENTRYPOINT []
 
-CMD ["index.js"]
+CMD ["node", "index.js"]
