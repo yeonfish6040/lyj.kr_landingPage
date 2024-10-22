@@ -11,7 +11,7 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'jenkins-admin-user', passwordVariable: 'password', usernameVariable: 'username')]) {
+                    withCredentials([usernamePassword(credentialsId: 'LYJ_DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
                         sh """
                         echo $password | docker login --username $username --password-stdin
                         docker build -f Dockerfile -t $username/lyj_landingpage .
