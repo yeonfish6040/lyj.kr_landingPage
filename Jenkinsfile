@@ -27,13 +27,13 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'LYJ_DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
                         sh """
-                        sudo docker ps
-                        sudo docker stop lyj_landingpage || true
-                        sudo docker rm lyj_landingpage || true
-                        sudo docker pull $username/lyj_landingpage
-                        sudo docker run -d --name lyj_landingpage --restart always -p 9002:3000 $username/lyj_landingpage
-                        sudo docker network connect lyj_default lyj_landingpage
-                        sudo docker image prune -f
+                        docker ps
+                        docker stop lyj_landingpage || true
+                        docker rm lyj_landingpage || true
+                        docker pull $username/lyj_landingpage
+                        docker run -d --name lyj_landingpage --restart always -p 9002:3000 $username/lyj_landingpage
+                        docker network connect lyj_default lyj_landingpage
+                        docker image prune -f
                         """
                     }
                 }
