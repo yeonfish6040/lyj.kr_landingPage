@@ -93,7 +93,9 @@ const server = http.createServer((req, res) => {
     }))
         .then(() => res.end())
         .catch((e) => {
-            res.writeHead(e[1]);
+            res.writeHead(e[1],{
+                'Access-Control-Allow-Origin': '*',
+              });
             res.write(e[2]);
             res.end();
     });
