@@ -49,6 +49,13 @@ const server = http.createServer((req, res) => {
                         accept()
                     }).catch((e) => reject([e, 500, "Internal error occurred"]));
                     break;
+                case "/ctf":
+                    readFile("./pages/ex.html").then((data) => {
+                        res.writeHead(200);
+                        res.write(data);
+                        accept()
+                    }).catch((e) => reject([e, 500, "Internal error occurred"]));
+                    break;
                 case "/mock_test":
                     if (req.method === "GET") {
                         readFile("./pages/mock_test.html").then((data) => {
