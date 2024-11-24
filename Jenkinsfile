@@ -32,7 +32,6 @@ pipeline {
                         docker rm lyj_landingpage || true
                         docker pull $username/lyj_landingpage
                         docker run -d --name lyj_landingpage --restart always -p 9002:3000 $username/lyj_landingpage
-                        docker network connect lyj_default lyj_landingpage
                         docker image prune -f
                         """
                     }
