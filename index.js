@@ -86,7 +86,7 @@ const server = http.createServer((req, res) => {
                     }).catch((e) => reject([e, 500, "Internal error occurred"]));
                     break;
                 default:
-                    reject([null, 404, "Not Found"])
+                    reject([null, 200, "Not Found"])
             }
         } catch (e) {
         }
